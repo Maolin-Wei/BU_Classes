@@ -1,2 +1,2 @@
 # BU_Classes
-The repository is used for uploading codes written in classes.
+The repository is used for uploading materials in classes.
