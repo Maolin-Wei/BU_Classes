@@ -1,4 +1,3 @@
-// Function to search for a location and update the map to center on that location
 function searchLocation() {
     // Create a new geocoder object from the Google Maps API
     var geocoder = new google.maps.Geocoder();
@@ -8,15 +7,54 @@ function searchLocation() {
 
     // Use the geocoder to convert the address into latitude and longitude
     geocoder.geocode({'address': address}, function(results, status) {
-        // Check if the geocode request was successful
         if (status === 'OK') {
-            // Update the map's center to the geocoded location
-            map.setCenter(results[0].geometry.location);
-            
-            // Set the map's zoom level to 15
-            map.setZoom(15);
+            var location = results[0].geometry.location;
+            map.setCenter(location);
+            map.setZoom(18);
+
+            // Place a marker on the geocoded location
+            var infoMarker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            // Create a PlacesService object
+            var placesService = new google.maps.places.PlacesService(map);
+
+            // Use the placeId from the geocoding result to get more details
+            var detailsRequest = {
+                placeId: results[0].place_id
+            };
+
+            placesService.getDetails(detailsRequest, function(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    var content = `<strong>${place.name || ''}</strong><br>
+                                   ${place.formatted_address}<br>`;
+                    if (place.photos && place.photos.length > 0) {
+                        content += `<img src="${place.photos[0].getUrl({maxWidth: 200, maxHeight: 200})}" alt="${place.name || 'Location'}">`;
+                    }
+                    // Uncomment below if you want to display reviews
+                    // if (place.reviews && place.reviews.length > 0) {
+                    //     content += `<br><br><strong>Reviews:</strong><br>`;
+                    //     for (let review of place.reviews) {
+                    //         content += `"${review.text}" - ${review.author_name}<br>`;
+                    //     }
+                    // }
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: content,
+                        position: location,
+                    });
+                    infoWindow.open(map, infoMarker);
+                } else {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: results[0].formatted_address,
+                        position: location,
+                    });
+                    infoWindow.open(map, infoMarker);
+                }
+            });
+
         } else {
-            // If the geocode request was unsuccessful, show an alert with the error message
             alert('Search was not successful for the following reason: ' + status);
         }
     });
