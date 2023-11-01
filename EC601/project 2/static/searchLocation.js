@@ -1,9 +1,22 @@
+var currentMarker = null;
+var currentInfoWindow = null;
+
 function searchLocation() {
     // Create a new geocoder object from the Google Maps API
     var geocoder = new google.maps.Geocoder();
     
     // Get the value entered in the address input field by the user
     var address = document.getElementById("addressInput").value;
+
+    // Remove the previous marker and info window if they exist
+    if (currentMarker) {
+        currentMarker.setMap(null);
+        currentMarker = null;
+    }
+    if (currentInfoWindow) {
+        currentInfoWindow.close();
+        currentInfoWindow = null;
+    }
 
     // Use the geocoder to convert the address into latitude and longitude
     geocoder.geocode({'address': address}, function(results, status) {
@@ -17,6 +30,7 @@ function searchLocation() {
                 position: location,
                 map: map
             });
+            currentMarker = infoMarker; // Store the reference for next time
 
             // Create a PlacesService object
             var placesService = new google.maps.places.PlacesService(map);
@@ -33,24 +47,19 @@ function searchLocation() {
                     if (place.photos && place.photos.length > 0) {
                         content += `<img src="${place.photos[0].getUrl({maxWidth: 200, maxHeight: 200})}" alt="${place.name || 'Location'}">`;
                     }
-                    // Uncomment below if you want to display reviews
-                    // if (place.reviews && place.reviews.length > 0) {
-                    //     content += `<br><br><strong>Reviews:</strong><br>`;
-                    //     for (let review of place.reviews) {
-                    //         content += `"${review.text}" - ${review.author_name}<br>`;
-                    //     }
-                    // }
                     var infoWindow = new google.maps.InfoWindow({
                         content: content,
                         position: location,
                     });
                     infoWindow.open(map, infoMarker);
+                    currentInfoWindow = infoWindow; // Store the reference for next time
                 } else {
                     var infoWindow = new google.maps.InfoWindow({
                         content: results[0].formatted_address,
                         position: location,
                     });
                     infoWindow.open(map, infoMarker);
+                    currentInfoWindow = infoWindow; // Store the reference for next time
                 }
             });
 
