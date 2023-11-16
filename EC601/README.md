@@ -13,4 +13,4 @@ Build a simple web application using Google Map APIs and OpenAI APIs.
 
 ## Project 3
 **Topic: Societal Impacts of Self-Driving Cars**  
-Write a Societal Impact paper
+Write a Societal Impact paper.
