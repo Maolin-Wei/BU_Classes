@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>3D Point Cloud Object Detection Platform</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;
+
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1911</width>
+      <height>1151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget::pane { /* Tab的主体 */
+    border: 0px solid #4da6ff;
+    background: #4da6ff;
+    border-radius: 10px; /* 添加圆角以匹配按钮 */
+}
+
+QTabBar::tab { /* Tab项 */
+    background: #4da6ff;
+    color: white;
+    border: 1px solid #4da6ff;
+    border-bottom-color: none; /* 使Tab看起来与Pane相连 */
+    padding: 5px 10px;
+    font-size: 16px;
+    border-top-left-radius: 10px; /* 圆角 */
+    border-top-right-radius: 10px; /* 圆角 */
+}
+
+QTabBar::tab:selected { /* 选中的Tab */
+    background: #008CBA; /* 选中Tab的背景色 */
+}
+
+QTabBar::tab:hover { /* 鼠标悬停在Tab上 */
+    background: #008CBA; /* 鼠标悬停的背景色 */
+}
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>12</width>
+      <height>12</height>
+     </size>
+    </property>
+    <property name="usesScrollButtons">
+     <bool>true</bool>
+    </property>
+    <property name="documentMode">
+     <bool>false</bool>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <property name="movable">
+     <bool>false</bool>
+    </property>
+    <property name="tabBarAutoHide">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="demoTab">
+     <attribute name="title">
+      <string>Demo</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1211</width>
+        <height>78</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="4">
+        <widget class="QComboBox" name="datasetSelect">
+         <property name="maximumSize">
+          <size>
+           <width>199</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #4da6ff;
+    color: white;
+    selection-background-color: #008CBA;
+}
+</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>KITTI</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>nuScenes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Waymo</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Select Calib Folder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Select Image Folder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Select Point Cloud Folder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Process Point Cloud</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Project 3D Bounding Boxes into Image</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QComboBox" name="modelSelect">
+         <property name="maximumSize">
+          <size>
+           <width>199</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #4da6ff;
+    color: white;
+    selection-background-color: #008CBA;
+}
+</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>PointPillars</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Point_RCNN</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SECOND</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QPushButton" name="outputVideo">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Output to Video</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>1581</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>20</number>
+       </property>
+       <item row="0" column="1">
+        <widget class="QWidget" name="resPointCloudContainer" native="true">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QWidget" name="oriPointCloudContainer" native="true">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>610</y>
+        <width>1581</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>20</number>
+       </property>
+       <item row="0" column="2">
+        <widget class="QLabel" name="resImage">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>780</width>
+           <height>480</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="oriImage">
+         <property name="maximumSize">
+          <size>
+           <width>780</width>
+           <height>480</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>1610</x>
+        <y>110</y>
+        <width>281</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QListWidget" name="pointCloudListWidget">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>1650</x>
+        <y>90</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+font-size: 16px;
+font-weight: bold;
+</string>
+      </property>
+      <property name="text">
+       <string>Point Cloud File List</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>1680</x>
+        <y>600</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+font-size: 16px;
+font-weight: bold;
+</string>
+      </property>
+      <property name="text">
+       <string>Runnning Logs</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>1610</x>
+        <y>620</y>
+        <width>281</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="0">
+        <widget class="QTextBrowser" name="logTextBrowser">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="trainTab">
+     <attribute name="title">
+      <string>Train</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>431</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QComboBox" name="trainDatasetSelect">
+         <property name="maximumSize">
+          <size>
+           <width>199</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #4da6ff;
+    color: white;
+    selection-background-color: #008CBA;
+}
+</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>KITTI</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>nuScenes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Waymo</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Select Dataset Folder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="trainButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Start Training</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="trainModelSelect">
+         <property name="maximumSize">
+          <size>
+           <width>199</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #4da6ff;
+    color: white;
+    selection-background-color: #008CBA;
+}
+</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>PointPillars</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Point_RCNN</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SECOND</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>1431</width>
+        <height>901</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="0" column="0">
+        <widget class="QTextBrowser" name="trainLogTextBrowser">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="trainingLog">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>110</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+font-size: 16px;
+font-weight: bold;
+</string>
+      </property>
+      <property name="text">
+       <string>Training Logs</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="testTab">
+     <attribute name="title">
+      <string>Test</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>431</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QComboBox" name="testDatasetSelect">
+         <property name="maximumSize">
+          <size>
+           <width>199</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #4da6ff;
+    color: white;
+    selection-background-color: #008CBA;
+}
+</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>KITTI</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>nuScenes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Waymo</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Select Dataset Folder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="testModelSelect">
+         <property name="maximumSize">
+          <size>
+           <width>199</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #4da6ff;
+    color: white;
+    selection-background-color: #008CBA;
+}
+</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>PointPillars</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Point_RCNN</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SECOND</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="testButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #4da6ff;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background-color: #008CBA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Start Testing</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>1431</width>
+        <height>901</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_9">
+       <item row="0" column="0">
+        <widget class="QTextBrowser" name="testLogTextBrowser">
+         <property name="styleSheet">
+          <string notr="true">QWidget {
+    border: 1px solid black; /* Sets a black border */
+    border-radius: 0px; /* Rounded corners, optional */
+}
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="testingLog">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>110</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+font-size: 16px;
+font-weight: bold;
+</string>
+      </property>
+      <property name="text">
+       <string>Testing Logs</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
