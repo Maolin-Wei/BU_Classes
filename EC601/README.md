@@ -8,9 +8,9 @@ Literature and Product Review of this topic.
 **Topic: Google Map APIs and OpenAI APIs**  
 Build a simple web application using Google Map APIs and OpenAI APIs.
 
-## Final Project
-**Topic: 3D Object Detection from Point Clouds**
-
 ## Project 3
 **Topic: Societal Impacts of Self-Driving Cars**  
 Write a Societal Impact paper.
+
+## Final Project
+**Topic: 3D Object Detection from Point Clouds**
