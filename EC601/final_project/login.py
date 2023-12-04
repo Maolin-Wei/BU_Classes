@@ -33,6 +33,8 @@ class LoginWindow(QtWidgets.QDialog):
 
         if self.db_manager.validate_login(username, password):
             self.accept()
+            window = MainWindow()
+            window.show()
         else:
             QtWidgets.QMessageBox.warning(self, 'Error', 'Wrong username or password')
 
@@ -44,9 +46,6 @@ class LoginWindow(QtWidgets.QDialog):
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
 
-    login = LoginWindow()
-
-    if login.exec_() == QtWidgets.QDialog.Accepted:
-        window = MainWindow()
-        window.show()
-        sys.exit(app.exec_())
+    login_window = LoginWindow()
+    login_window.show()
+    sys.exit(app.exec_())

@@ -35,8 +35,8 @@ class MainWindow(QMainWindow):
         super().__init__()
         # Load the UI design
         loadUi("./ui/main.ui", self)
-        self.gui_log_handler = None
 
+        self.gui_log_handler = None
         self.device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
         self.modelsConfig = {
             'KITTI': {
@@ -262,17 +262,18 @@ class MainWindow(QMainWindow):
             point_cloud = read_bin_file(point_cloud_path)
             result = inference_detector(self.model, point_cloud_path)
             bboxes_3d = result[0].pred_instances_3d.bboxes_3d
+            processed_img = None
+            if image_path != '' and calib_path != '':
+                lidar2img_res = np.array(get_lidar2img(calib_path), dtype=np.float32)
+                input_meta = {'lidar2img': lidar2img_res}
 
-            lidar2img_res = np.array(get_lidar2img(calib_path), dtype=np.float32)
-            input_meta = {'lidar2img': lidar2img_res}
+                img = mmcv.imread(image_path)
+                img = mmcv.imconvert(img, 'bgr', 'rgb')
 
-            img = mmcv.imread(image_path)
-            img = mmcv.imconvert(img, 'bgr', 'rgb')
-
-            self.visualizer.set_image(img)
-            self.visualizer.draw_proj_bboxes_3d(bboxes_3d, input_meta)
-            processed_img = self.visualizer.get_image()
-            processed_img = resize_image(processed_img)
+                self.visualizer.set_image(img)
+                self.visualizer.draw_proj_bboxes_3d(bboxes_3d, input_meta)
+                processed_img = self.visualizer.get_image()
+                processed_img = resize_image(processed_img)
 
             return point_cloud, bboxes_3d, processed_img
 
