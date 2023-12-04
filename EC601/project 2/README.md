@@ -20,11 +20,13 @@ By integrating the Google Maps with OpenAI chat bot, making it easier for users 
 4. Allow users to chat with the OpenAI bot and get information from it.
 
 ## Demo
-The picture below is a demo of my web application. 
+
 1. Users can enter a location and click "Search" button to display it on the map.
 2. Users can enter two locations and click "Navigate" button to get the route between the two locations. Besides, users can click two location on map to get the route when using the "Navigation Mode". The blue line shows the route of driving a car, the red line shows the route of riding a bicycle, and the green line shows the route of walking.
 3. The "Switch to Info Mode" button can switch between "Info Mode" and "Navigation Mode". In the "Info Mode", when users click a location on map, it will display a detailed information of the place. In the "Navigation Mode", when users click two locations on map, it will display the routes between the two plcaes.
 4. The OpenAI Chat window can make users to chat with the ChatGPT. Users can get some suggestions about restaurants, places of interest, etc. from it, which make them plan their travel easier.
+
+The picture below is a demo of my web application. 
 ![Demo](./demo.jpg)
 
 ## Run
