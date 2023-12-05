@@ -19,7 +19,7 @@ The project is to build the a software platform for object detection in 3D point
 - OpenCV
 
 ### Data Preparation
-Download the dataset and put it in data/.
+Download the dataset and put it in data/.  
 For example, for KITTI dataset, the folder structure should be like below:  
 
     ROOT  
