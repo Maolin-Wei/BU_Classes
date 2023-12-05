@@ -271,7 +271,7 @@ class MainWindow(QMainWindow):
                 img = mmcv.imconvert(img, 'bgr', 'rgb')
 
                 self.visualizer.set_image(img)
-                self.visualizer.draw_proj_bboxes_3d(bboxes_3d, input_meta)
+                self.visualizer.draw_proj_bboxes_3d(bboxes_3d, input_meta, line_widths=4)
                 processed_img = self.visualizer.get_image()
                 processed_img = resize_image(processed_img)
 

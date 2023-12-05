@@ -49,7 +49,7 @@ class VideoOutputThread(QThread):
         pcd_files = [f for f in os.listdir(self.point_cloud_folder) if f.endswith('.bin')]
         fourcc = cv2.VideoWriter_fourcc(*'MJPG')
         video_output_path = os.path.join(self.output_folder, 'output_video.avi')
-        video_writer = cv2.VideoWriter(video_output_path, fourcc, 24.0, (780, 960))
+        video_writer = cv2.VideoWriter(video_output_path, fourcc, 30.0, (780, 960))
         tqdm_out = TqdmToQt(self)
         self.update_signal.emit("Start to output a video.")
 
@@ -58,9 +58,8 @@ class VideoOutputThread(QThread):
             img_file = pcd_file.replace('.bin', '.png')
             img_path = os.path.join(self.image_folder, img_file)
             calib_file = os.path.join(self.calib_folder, pcd_file.replace('.bin', '.txt'))
-            point_cloud, bboxes_3d, processed_img = self.parent().processPointCloudAndImage(pcd_path, img_path,
+            point_cloud, bboxes_3d, processed_img = self.parent().process_point_cloud_and_image(pcd_path, img_path,
                                                                                             calib_file)
-
             self.updatePointCloudSignal.emit(point_cloud, self.ori_point_cloud_widget, None)
             self.updatePointCloudSignal.emit(point_cloud, self.res_point_cloud_widget, bboxes_3d)
             self.grabFrameSignal.emit()
@@ -240,7 +239,7 @@ def add_bbox_lines_to_widget(widget, line_vertices):
     """
     Add bounding box line to OpenGL view item
     """
-    lines_item = GLLinePlotItem(pos=line_vertices, color=(1, 0, 0, 1), width=1.0, mode='lines')
+    lines_item = GLLinePlotItem(pos=line_vertices, color=(1, 0, 0, 1), width=3.0, mode='lines')
     widget.addItem(lines_item)
 
 
