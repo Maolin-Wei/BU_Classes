@@ -19,7 +19,7 @@ The project is to build the a software platform for object detection in 3D point
 - OpenCV
 
 ### Data Preparation
-1.  Download the dataset and put it in data/.  
+1.  Download the dataset and put it in ```data/```.  
     For example, for KITTI dataset, the folder structure should be like below:  
     ```
     ROOT  
@@ -40,7 +40,27 @@ The project is to build the a software platform for object detection in 3D point
     ```
     python tools/create_data.py kitti --root-path ./data/kitti --out-dir ./data/kitti --extra-tag kitti
     ```
-    
+    Then, the ```data/kitti``` folder structure should be as follows:
+    ```
+    Root  
+    ├── data  
+    │   ├── kitti  
+    │   │   ├── ImageSets  
+    │   │   ├── testing  
+    │   │   │   ├──calib & image_2 & velodyne & velodyne_reduced  
+    │   │   ├── training  
+    │   │   │   ├──calib & image_2 & label_2 & velodyne & velodyne_reduced  
+    │   │   ├── kitti_gt_database  
+    │   │   ├── kitti_infos_train.pkl  
+    │   │   ├── kitti_infos_trainval.pkl  
+    │   │   ├── kitti_infos_val.pkl  
+    │   │   ├── kitti_infos_test.pkl  
+    │   │   ├── kitti_dbinfos_train.pkl
+    ├── configs  
+    ├── mmdet3d  
+    ├── tools  
+    ```
+
 ## Reference
 - [MMDetection3D](https://github.com/open-mmlab/mmdetection3d)
 ```latex
