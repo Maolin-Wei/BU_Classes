@@ -16,10 +16,11 @@ The project is to build the a software platform for object detection in 3D point
 ### Installation
 - **MMDection3D**: Please refer to [MMDetection3D's document](https://github.com/thePegasusai/mmdetection3d/blob/master/docs/en/getting_started.md) for installation.
 - PyQt5
+- pyqtgraph
 - OpenCV
 
 ### Data Preparation
-**1.  Download the dataset and put it in** ```data/```.
+**1.  Download the dataset and put it in data/.**  
     For example, for KITTI dataset, the folder structure should be like below:  
 
     ROOT  
@@ -34,14 +35,14 @@ The project is to build the a software platform for object detection in 3D point
     ├── mmdet3d  
     ├── tools  
 
-**2.  Prepare for the data.** (The process will be ingrated in the GUI for next version)
+**2.  Prepare for the data.** (The process will be ingrated in the GUI for next version)  
     Due to different ways of organizing the raw data in different datasets, we typically need to collect the useful data information with a .pkl file. So after getting all the raw data ready, we need to run the scripts provided in the tools/create_data.py for different datasets to generate data infos.  
-    For example, for KITTI we need to run:
+    For example, for KITTI we need to run:  
     
-    python tools/create_data.py kitti --root-path ./data/kitti --out-dir ./data/kitti --extra-tag kitti  
-
-    Then, the data/kitti folder structure should be as follows:  
-
+        python tools/create_data.py kitti --root-path ./data/kitti --out-dir ./data/kitti --extra-tag kitti  
+    
+    Then, the data/kitti folder structure should be as follows: 
+    
     Root  
     ├── data  
     │   ├── kitti  
@@ -59,7 +60,7 @@ The project is to build the a software platform for object detection in 3D point
     ├── configs  
     ├── mmdet3d  
     ├── tools  
-
+    
 ### Run
     After all preparations are completed, run the login.py to launch the software.  
     
