@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, uic
 import sys
-from main_GUI import MainWindow
+from main_window import MainWindow
 from register import RegisterWindow
 from database import DatabaseManager
 
