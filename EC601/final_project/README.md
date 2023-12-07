@@ -12,6 +12,25 @@ The project is to build the a software platform for object detection in 3D point
 - **Training Module**: Enables users to train their own detection model with selected datasets.  
 - **Testing Module**: Enables users to test trained models on selected datasets, offering insights into model performance and accuracy.  
 
+## Demo
+- Demo Videos: 
+
+- Login Window
+![Login](./images/login.png)
+
+- Registration Window
+![Registration](./images/register.png)
+
+- Detection Window
+![detection](./images/detection.png)
+
+- Train Window
+![detection](./images/train.png)
+
+- Test Window
+![detection](./images/test.png)
+
+
 ## Getting Started
 ### Installation
 - **MMDection3D**: Please refer to [MMDetection3D's document](https://github.com/thePegasusai/mmdetection3d/blob/master/docs/en/getting_started.md) for installation.
@@ -71,6 +90,17 @@ After all preparations are completed, run the ```login.py``` to launch the softw
 ```   
 python login.py  
 ```
+
+### Pcakage
+
+Using ```Pyinstaller``` to package the codes to an executable file(*.exe) that can be run on Windows system.
+```
+pyinstaller --add-data "packages/mmcv:mmcv" --add-data "packages/yapf_third_party:yapf_third_party" -w login.py
+```
+
+After running successfully, a folder named ```dist``` will generate in the current folder. There will be a ```login.exe``` file in it.
+
+Place folders of ```ui, checkpoints, configs, data``` into the same directory as the ```login.exe```, then double-click to open the software.
 
 ## Reference
 - [MMDetection3D](https://github.com/open-mmlab/mmdetection3d)
