@@ -25,6 +25,7 @@ class VideoOutputThread(QThread):
                  ori_image_widget, res_point_cloud_widget, res_image_widget, parent=None):
         super(VideoOutputThread, self).__init__(parent)
         self.output_folder = None
+        self.model_name = None
         self.visualizer = visualizer
         self.point_cloud_folder = point_cloud_folder
         self.image_folder = image_folder
@@ -36,13 +37,14 @@ class VideoOutputThread(QThread):
         self.res_image_widget = res_image_widget
         self.frameSavedEvent = Event()
 
-    def update_variables(self, visualizer, point_cloud_folder, image_folder, calib_folder, model, output_folder):
+    def update_variables(self, visualizer, point_cloud_folder, image_folder, calib_folder, model, output_folder, model_name):
         self.visualizer = visualizer
         self.point_cloud_folder = point_cloud_folder
         self.image_folder = image_folder
         self.calib_folder = calib_folder
         self.model = model
         self.output_folder = output_folder
+        self.model_name = model_name
 
     def run(self):
         # Get point cloud file folder
@@ -75,9 +77,20 @@ class VideoOutputThread(QThread):
             # Write frame to video
             img = mmcv.imread(img_path)
             img = mmcv.imconvert(img, 'bgr', 'rgb')
-            self.updateImageSignal.emit(convert_img2pixmap(resize_image(img.copy())), self.ori_image_widget)
-            self.updateImageSignal.emit(convert_img2pixmap(resize_image(processed_img)), self.res_image_widget)
+            img = resize_image(img)
+
+            self.updateImageSignal.emit(convert_img2pixmap(img), self.ori_image_widget)
+            self.updateImageSignal.emit(convert_img2pixmap(processed_img), self.res_image_widget)
             processed_img = mmcv.imconvert(processed_img, 'rgb', 'bgr')
+
+            cv2.putText(frame_point_cloud,
+                        f"Model: {self.model_name}",
+                        (50, 50),  # Position at which writing has to start
+                        cv2.FONT_HERSHEY_SIMPLEX,  # Font type
+                        1,  # Font scale
+                        (0, 0, 255),  # Font color
+                        3)  # Line type
+
             # Stack both frames vertically
             combined_frame = np.vstack((frame_point_cloud, processed_img))
             video_writer.write(combined_frame)
