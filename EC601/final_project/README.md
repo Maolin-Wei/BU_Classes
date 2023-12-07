@@ -30,17 +30,17 @@ The project is to build the a software platform for object detection in 3D point
 
 - **Detection Window**
 <p align="center">
-  <img src="./images/detection.png" alt="Detection" width="600"， height="400">
+  <img src="./images/detection.png" alt="Detection" width="800"， height="600">
 </p>
 
 - **Train Window**
 <p align="center">
-  <img src="./images/train.png" alt="Train" width="600"， height="400">
+  <img src="./images/train.png" alt="Train" width="800"， height="600">
 </p>
 
 - **Test Window**
 <p align="center">
-  <img src="./images/test.png" alt="Test" width="600"， height="400">
+  <img src="./images/test.png" alt="Test" width="800"， height="600">
 </p>
 
 
