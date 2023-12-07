@@ -1,7 +1,7 @@
 # Final Project - 3D Object Detection Software from Point Clouds
 
 <p align="center">
-  <img src="./images/Poster.png" alt="Poster" width="800"， height="600">
+  <img src="./images/Poster.png" alt="Poster" width="600"， height="400">
 </p>
 
 
