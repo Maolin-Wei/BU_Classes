@@ -13,21 +13,21 @@ The project is to build the a software platform for object detection in 3D point
 - **Testing Module**: Enables users to test trained models on selected datasets, offering insights into model performance and accuracy.  
 
 ## Demo
-- Demo Videos: 
+- **Demo Videos**:
 
-- Login Window
+- **Login Window**
 ![Login](./images/login.png)
 
-- Registration Window
+- **Registration Window**
 ![Registration](./images/register.png)
 
-- Detection Window
+- **Detection Window**
 ![detection](./images/detection.png)
 
-- Train Window
+- **Train Window**
 ![detection](./images/train.png)
 
-- Test Window
+- **Test Window**
 ![detection](./images/test.png)
 
 
