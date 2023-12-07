@@ -40,8 +40,10 @@ class MainWindow(QMainWindow):
         self.device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
         self.modelsConfig = {
             'KITTI': {
-                'PointPillars': ('configs/pointpillars/pointpillars_hv_secfpn_8xb6-160e_kitti-3d-3class.py',
-                                 'checkpoints/hv_pointpillars_secfpn_6x8_160e_kitti-3d-3class_20220301_150306-37dc2420.pth'),
+                # 'PointPillars': ('configs/pointpillars/pointpillars_hv_secfpn_8xb6-160e_kitti-3d-3class.py',
+                #                  'checkpoints/hv_pointpillars_secfpn_6x8_160e_kitti-3d-3class_20220301_150306-37dc2420.pth'),
+                'PointPillars': ('configs/pointpillars/pointpillars_hv_secfpn_8xb6-160e_kitti-3d-car.py',
+                                 'checkpoints/hv_pointpillars_secfpn_6x8_160e_kitti-3d-car_20220331_134606-d42d15ed.pth'),
                 'Point_RCNN': ('configs/point_rcnn/point-rcnn_8xb2_kitti-3d-3class.py',
                                'checkpoints/point_rcnn_2x8_kitti-3d-3classes_20211208_151344.pth'),
                 'SECOND': ('configs/second/second_hv_secfpn_8xb6-80e_kitti-3d-3class.py',
@@ -300,8 +302,9 @@ class MainWindow(QMainWindow):
         folder_path = QFileDialog.getExistingDirectory(self, "Select Output Folder")
         if folder_path:
             self.log_message(f"Selected Output Folder: {folder_path}")
+            model_name = self.modelSelect.currentText()
             self.video_thread.update_variables(self.visualizer, self.point_cloud_folder, self.image_folder,
-                                               self.calib_folder, self.model, folder_path)
+                                               self.calib_folder, self.model, folder_path, model_name)
             if not self.video_thread.isRunning():
                 self.video_thread.start()
         else:
@@ -311,5 +314,6 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
+
     mainWindow.show()
     sys.exit(app.exec_())
