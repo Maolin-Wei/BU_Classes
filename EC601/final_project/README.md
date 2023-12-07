@@ -1,6 +1,9 @@
 # Final Project - 3D Object Detection Software from Point Clouds
 
-![Poster](./images/Poster.png)
+<p align="center">
+  <img src="./images/Poster.png" alt="Poster" width="800"， height="600">
+</p>
+
 
 ## Introduction
 The project is to build the a software platform for object detection in 3D point cloud data. It leverages OpenMMLab's [MMDetection3D](https://github.com/thePegasusai/mmdetection3d) toolbox to process point cloud data, implement the detection model, train/test the model, etc. With an intuitive GUI, it allows users easier utilize advanced algorithms for 3D Object detection from point cloud data, providing a efficient way for a wide range of applications in fields like robotics, autonomous vehicles, an so on.
@@ -16,19 +19,29 @@ The project is to build the a software platform for object detection in 3D point
 - **Demo Videos**:
 
 - **Login Window**
-![Login](./images/login.png)
+<p align="center">
+  <img src="./images/login.png" alt="Login" width="500"， height="300">
+</p>
 
 - **Registration Window**
-![Registration](./images/register.png)
+<p align="center">
+  <img src="./images/register.png" alt="Registration" width="500"， height="300">
+</p>
 
 - **Detection Window**
-![detection](./images/detection.png)
+<p align="center">
+  <img src="./images/detection.png" alt="Detection" width="600"， height="400">
+</p>
 
 - **Train Window**
-![detection](./images/train.png)
+<p align="center">
+  <img src="./images/train.png" alt="Train" width="600"， height="400">
+</p>
 
 - **Test Window**
-![detection](./images/test.png)
+<p align="center">
+  <img src="./images/test.png" alt="Test" width="600"， height="400">
+</p>
 
 
 ## Getting Started
