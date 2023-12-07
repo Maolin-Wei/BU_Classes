@@ -1,5 +1,5 @@
 # ENG EC601
-The repository is used for uploading materials in the class of EC601.
+The repository is used for uploading materials in the class of ENG EC601 - Product Design in Electrical and Computer Engineering.
 ## Project 1
 **Topic: Artificial Lifeguard**  
 Literature and Product Review of this topic.
