@@ -111,9 +111,9 @@ Using ```Pyinstaller``` to package the codes to an executable file(*.exe) that c
 pyinstaller --add-data "packages/mmcv:mmcv" --add-data "packages/yapf_third_party:yapf_third_party" -w login.py
 ```
 
-After running successfully, a folder named ```dist``` will generate in the current folder. There will be a ```login.exe``` file in it.
+After running successfully, a folder named ```dist/``` will generate in the current folder. There will be a ```login.exe``` file in it.
 
-Place folders of ```ui, checkpoints, configs, data``` into the same directory as the ```login.exe```, then double-click to open the software.
+Place folders of ```ui/, checkpoints/, configs/, data/``` into the same directory as the ```login.exe```, then double-click to open the software.
 
 ## Reference
 - [MMDetection3D](https://github.com/open-mmlab/mmdetection3d)
