@@ -16,7 +16,8 @@ The project is to build the a software platform for object detection in 3D point
 - **Testing Module**: Enables users to test trained models on selected datasets, offering insights into model performance and accuracy.  
 
 ## Demo
-- **Demo Videos**:  **[Youtube link](https://www.youtube.com/shorts/jL8j-vp2kRg)**
+- **Demo Turtorial Videos**:  **[Youtube link](https://www.youtube.com/watch?v=uEN7J7l3VUk)**
+- **Demo Detection Videos**:  **[Youtube link](https://www.youtube.com/shorts/jL8j-vp2kRg)**
 
 - **Login Window**
 <p align="center">
